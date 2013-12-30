@@ -1,14 +1,53 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <ctype.h>
+#include <locale.h>
 
 #define MAX_OBJ 	1024
 #define MAX_BYTES	1024
 #define DEBUG_LEVEL 3
 
 /*
-* Lookups input buffer and 
+* Lookups input buffer and find the next name of symbol:
+* There is a restriction on symbols, it could be a word, number or sign.
+* words contain letters only, numbers - digits only, signs - any delimiter or bracket.
+* symbol, object, dynamic object.
+* if it's a symbol - just write it to the output. if it's an object - should substitute it with set of 
+* objects or symbols. if it's number - just treat it as symbol.
+* pattern - it's a group of objects by type. to substitute it we should have a defined pattern.
 */
 int get_name(char* ibuf, int ibuf_len, int offset)
 {
+	char ctmp = 0;
+	int idx = 0;
+
+	if (offset > ibuf_len) return 0;
+
+	ctmp = ibuf[ offset + idx ];
+	
+	setlocale(LC_ALL, "");
+
+	if (isalpha(ctmp)) 
+	{
+		while(1) 
+		{
+			ctmp = ibuf[ offset + idx ];
+			if (!isalpha(ctmp) || ( (offset+idx) == ibuf_len ) )
+			{
+				break; //return(offset+idx);
+			}
+			idx++;
+			
+		}
+	}
+	
+	return (offset+idx);
+	
+	/*
+	if (is(ctmp)) {};
+	if (isNonLetter(ctmp)) {};
+	if (isdigit(ctmp)) {}; 
+	*/
+	//isalnum, iscntrl, isdigit, ispunct, isupper, islower
 
 }
 
@@ -140,7 +179,7 @@ int main (int argc, char* argv[])
    	}
    	for (i = count; i < MAX_BYTES; ++i) ibuf[i] = 0; // clean the rest of the buffer.
 	
-	printf("Input has %d bytes.\n", ibuf_len);
+	printf("Input has %d bytes.\n", count);
 	fclose(input);
    	
 	// 3.0.1) Looking for symbols. There is a restriction on symbols, it could be a word, number or sign.
@@ -152,6 +191,7 @@ int main (int argc, char* argv[])
 
 	inextb = get_name(ibuf, ibuf_len, 0);
 
+	printf("The name is found at offset %d.\n", inextb);
 
 
 
