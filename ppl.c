@@ -4,20 +4,38 @@
 #define MAX_BYTES	1024
 #define DEBUG_LEVEL 3
 
+/*
+* Lookups input buffer and 
+*/
+int get_name(char* ibuf, int ibuf_len, int offset)
+{
+
+}
+
 
 int main (int argc, char* argv[])
 {
-	FILE* fdb;
+	FILE* fdb;	// database of all objects
+	FILE* input; 
+	FILE* output;
 	long fpos = 0;
 	int c, i;
 	long count = 0;
 	char buffer[] = { 0x01 , 'o', 'b', 'j', 'e', 'c', 't', 's', '.', 't', 'x', 't' , 0x02 };
 	long iobjb [MAX_OBJ];	// starting index of objects (offset)
 	long iobje [MAX_OBJ];
-    long isymb [MAX_OBJ];
+    long isymb [MAX_OBJ];	// symbols
     long isyme [MAX_OBJ];
+    long ipatb [MAX_OBJ];	// patterns
+    long ipate [MAX_OBJ];
     int	 odx = 0; 			// object counter.
+    int  sdx = 0;			// symbol counter.
+    int  pdx = 0;			// pattern counter.
     char bcache [MAX_BYTES];// cache of string form file.
+    char ibuf [MAX_BYTES]; 	// input buffer, only first MAX_BYTES are interpreted.
+    long ibuf_len = 0;
+    int  inextb = 0; 		// the index of the next symbol
+    int  inexte = 0; 		// the index of the next symbol
     
     printf("pplayer \n");
 
@@ -38,10 +56,7 @@ int main (int argc, char* argv[])
 	{
 		// 2.1) Create default header for databse.
 		printf("Writing default header...\n");
-		
   		fwrite (buffer , sizeof(char), sizeof(buffer), fdb);
-
-
 	}
 	else
 	{
@@ -58,10 +73,24 @@ int main (int argc, char* argv[])
         	break ;
       	}
 
-      	if( c == 0x01 )
+      	if( c == 0x01 ) // objects
       	{
       		//new object is found.
       		iobjb[odx++] = count; 
+
+      	}
+
+      	if( c == 0x03 ) // symbols
+      	{
+      		//new object is found.
+      		isymb[sdx++] = count; 
+
+      	}
+
+      	if( c == 0x05 ) // patterns
+      	{
+      		//new object is found.
+      		ipatb[pdx++] = count; 
 
       	}
 
@@ -70,15 +99,61 @@ int main (int argc, char* argv[])
    	}
 
    	printf("Objects read: %d.\n", odx);
+   	printf("Symbols read: %d.\n", sdx);
+   	printf("Patterns read: %d.\n", pdx);
 
    	if (DEBUG_LEVEL >= 3)
    	{
+   		printf("Objects:");
    		for (i=0; i<odx; i++) printf("%d:", iobjb[i]);
+   		printf("\n");
+   		printf("Symbols:");
+   		for (i=0; i<sdx; i++) printf("%d:", isymb[i]);
+   		printf("\n");
+   		printf("Patterns:");
+   		for (i=0; i<pdx; i++) printf("%d:", ipatb[i]);
    		printf("\n");
    	}
 
     // 3) Split on all symbols
     // 3.0) Read input file
+    input = fopen ("input.txt","r");
+  	if (input == NULL)
+  	{
+  		// This is supposed to be normal termination
+    	printf ("No input! Exiting!\n");
+    	if (fdb != NULL) fclose(fdb);
+    	return 0;
+  	}
+  	fseek(input, 0, SEEK_SET);
+  	count = 0;
+  	while(1)
+   	{
+    	c = fgetc(input);
+    	if( feof(input) || (count == (MAX_BYTES - 2)) )
+      	{
+        	break ;
+        	ibuf_len = count;
+      	}
+      	ibuf[count] = c;
+      	count++;
+   	}
+   	for (i = count; i < MAX_BYTES; ++i) ibuf[i] = 0; // clean the rest of the buffer.
+	
+	printf("Input has %d bytes.\n", ibuf_len);
+	fclose(input);
+   	
+	// 3.0.1) Looking for symbols. There is a restriction on symbols, it could be a word, number or sign.
+	// words contain letters only, numbers - digits only, signs - any delimiter or bracket.
+	// symbol, object, dynamic object.
+	// if it's a symbol - just write it to the output. if it's an object - should substitute it with set of 
+	// objects or symbols. if it's number - just treat it as symbol.
+  	// pattern - it's a group of objects by type. to substitute it we should have a defined pattern.
+
+	inextb = get_name(ibuf, ibuf_len, 0);
+
+
+
 
     // 3.1) If not all objects are found - ask a description of object.
     // 3.2) Repeat until all symbols are known.
