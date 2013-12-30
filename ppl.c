@@ -7,6 +7,16 @@
 #define DEBUG_LEVEL 3
 
 /*
+* Finds the symbols which are not translatable and will be transfered to output.
+*/
+int get_symbol(char* ibuf, int ibuf_len, int offset)
+{
+
+	return 0;
+}
+
+
+/*
 * Lookups input buffer and find the next name of symbol:
 * There is a restriction on symbols, it could be a word, number or sign.
 * words contain letters only, numbers - digits only, signs - any delimiter or bracket.
