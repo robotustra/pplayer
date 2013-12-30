@@ -171,8 +171,8 @@ int main (int argc, char* argv[])
     	c = fgetc(input);
     	if( feof(input) || (count == (MAX_BYTES - 2)) )
       	{
-        	break ;
         	ibuf_len = count;
+        	break ;
       	}
       	ibuf[count] = c;
       	count++;
