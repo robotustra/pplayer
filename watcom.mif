@@ -1,0 +1,38 @@
+# Common elements for the Watcom makefiles
+
+demodir = $(DT_SRCDIR)
+
+LIBOBJS = ppl.obj
+
+DEMOS = pplayer.exe 
+
+LINK = wlink
+
+!ifdef __LOADDLL__
+! loaddll wcc    wccd
+! loaddll wcc386 wccd386
+! loaddll wlink  wlinkd
+! loaddll wlib   wlibd
+!endif
+
+all:  $(DEMOS)
+
+clean
+   -del *.obj
+   -del *.lib
+   -del *.exe
+   -del *.err
+
+demo:   $(DEMOS)
+
+.c: $(demodir)
+.c.obj: .autodepend
+   $(CC) $(CFLAGS) $<
+
+.obj.exe:
+   $(LINK) $(LDFLAGS) n $@ f $*.obj 
+
+pplayer.exe:  $(LIBOBJS)
+   $(LINK) $(LDFLAGS) file ppl.obj n $@ 
+
+dist: .symbolic
