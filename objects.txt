@@ -1,0 +1,5 @@
+objects.txt
+symbol1
+symbol2
+symbol3
+symbol4
