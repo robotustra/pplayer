@@ -1,7 +1,65 @@
 16.07.2015
 ----------
 
-	Список предложений, используемые мной. 
+Для более эффективного изучения языка взрослыми, нужно составить список
+предложений, которые используются чаще всего. Потом перевести их на другой
+язык и выучить наизусть. 
 
+Необходимо составить минимальный набор фраз, соединяя которые можно было бы описать
+любой произвольный разговор в течение дня.
 
-1) 
+	Список предложений (или рамочных конструкций), используемые мной. 
+
+1) Привет.							-	Hi.
+2) Это я.							- 	It's me.
+3) Ты где?							-	Where are you?
+4) Что ты делаешь?					-	What are you doing?
+5) Ты что хочешь сделать?			-	What do you want to do?
+6) Что мы/ты будешь/хочешь есть?	-	What will we/you eat?
+7) Куда ты идешь?					-	Where are you going?
+8) Я иду на работу.					-	I go to the work.
+9) Я иду в парк.					- 	I go to the park.
+10) Я иду гулять.					-	I go for a walk.
+11) Я иду в магазин.				- 	I go shopping/(to the shop).
+12) Я иду домой.					-	I go home.
+13) Хорошо.							-	Good.
+14) Отлично!						- 	Excellent!
+15) Мне нравится.					- 	I like it.
+16) Я хочу это купить.				-	I want to buy it.
+17) Сколько это стоит?				-	How much is it?
+18) Да.								- 	Yes.
+19) Нет.							-	No.
+20) Я не знаю.						-	I don't know.
+21) Я должен подумать.				-	I have to think.
+22) Я сделаю это прямо сейчас.		-	I will do this right now/away.
+23) Я сделаю это потом.				-	I will make it after.
+24) Что мне делать?					-	What I have to do?
+25) Дай мне, пожалуйста, (что-то).	-	Give me this, please.
+26) Где я могу найти (что-то)?		-	Where I can find it?
+27) Пошли сходим (туда-то).			-	Let's go there.
+28) Ты был (там-то)?				-	Were you there?
+29) Ты видел это?					-	Did you see this?
+30) Давай я тебе позвоню позже.		-	Let me call you later.
+31) Я сейчас занят.					-	I'm busy now.
+32) Пока.							-	Bye.
+33) Всего хорошего.					-	Good luck.
+34) Я могу сделать (то-то и то-то).	-	I can do this.
+35) Я хочу сделать (то-то и то-то).	-	I want to do this.
+36) У меня есть (это и это).		-	I have it/(this thing).
+37) У тебя есть (это)?				-	Do you have it?
+38) Когда ты это сделаешь?			-	When will you do this?
+39) Когда мы туда поедем?			-	When will we go there?
+40) Что мы там будем делать?		-	What will we do there?
+42) Что мы должны взять с собой?	-	What have we to take with us?
+43) Ты взял это?					-	Did you take this?
+44) Куда ты дел (это)?				-	Where did you put this?
+45) Ты видел куда я дел (это)?		-	Did you see where I put this?
+46) Ты не видел (это)?				-	Did you see this?
+47) Давай купим (это).				-	Let's buy this.
+48) Ты пойдешь в магазин?			-	Are you going to shop?
+49) Я хочу сходить в магазин.		-	I want to go to the shop.
+50) Спасибо.						-	Thanks
+51) Пожалуйста.						- 	Welcome.
+52) Мне это не нужно.				- 	I don't need this.
+53) Тебе это нужно?					-	Do you need this?
+
