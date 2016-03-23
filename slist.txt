@@ -62,4 +62,9 @@
 51) Пожалуйста.						- 	Welcome.
 52) Мне это не нужно.				- 	I don't need this.
 53) Тебе это нужно?					-	Do you need this?
+54) Я уже понял.					- 	I got it.
+55) Я получил это.					- 	I got it.
+56)	Я делаю печенье					-	I'm making cookies.
+57) Я сделал это сам.				- 	I made it myself.
+
 
